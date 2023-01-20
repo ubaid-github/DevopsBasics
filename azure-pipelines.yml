@@ -46,7 +46,5 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      az webapp create -g tfrg \
-        -p myasp \
-        -n mywebapp \
+      az webapp create -g tfrg -p myasp -n mywebapp-ur123 \
         --runtime "java|11|Java SE|8"
