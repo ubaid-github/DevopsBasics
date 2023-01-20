@@ -47,4 +47,4 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       az webapp create -g tfrg -p myasp -n mywebapp-ur123 \
-        --runtime "java|11|Java SE|8"
+        --runtime "TOMCAT|9.0-java11"
