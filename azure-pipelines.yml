@@ -32,3 +32,21 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+  
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Azure subscription 1(b0f53ad6-7dd8-4b1d-ba55-234f90a2a54c)'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az appservice plan create -g tfrg -n myasp --is-linux --number-of-workers 1 --sku F1'
+    
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Azure subscription 1(b0f53ad6-7dd8-4b1d-ba55-234f90a2a54c)'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      az webapp create -g tfrg \
+        -p myasp \
+        -n mywebapp \
+        --runtime "java|11|Java SE|8"
